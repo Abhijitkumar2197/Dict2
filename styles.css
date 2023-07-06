@@ -1,0 +1,48 @@
+
+
+.logo{
+  text-align: center;
+  color: blue;
+}
+
+.inputFiles{
+  align-content:center;
+  /* align-items: center; */
+  position: absolute;
+  display: inline;
+  text-align: center;
+  left: 25%;
+  right: 25%;
+  top: 150px;
+  height: 40px;
+  border-style:ridge;
+  padding: 3px;
+  border-radius: 100px;
+  border-color: blue;
+
+}
+
+.wordSearch{
+  position: absolute;
+  width: 87%;
+  left: 2%;
+  height: 90%;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  border-radius: 10%;
+}
+
+.btn{
+  position: absolute;
+  top: 2px;
+  height: 90%;
+  border: none;
+  right: 2px;
+  color: black;
+  background-color: white;
+  font-size: 20px;
+  width: 10%;
+  border-radius: 100%;
+
+}
