@@ -1,0 +1,11 @@
+{
+  "name": "dictionary2",
+  "version": "1.0.0",
+  "description": "This is dictionary site with exciting features",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abhijit",
+  "license": "ISC"
+}
