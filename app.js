@@ -7,7 +7,7 @@ const app = express();
 
 
 app.get("/" , (req,res) =>{
-  res.sendFile( __dirname + "/index.html");
+  // res.sendFile( __dirname + "/index.html");
   let data = ' ';
   https.get("https://api.dictionaryapi.dev/api/v2/entries/en/hello/", (response) => {
     response.on("data" , (chunk) => {
@@ -16,7 +16,7 @@ app.get("/" , (req,res) =>{
     response.on('end' , () => {
       let parsed  = JSON.parse(data);
       console.log(parsed);
-      // res.send(parsed);
+      res.send(parsed);
     });
 
   });
