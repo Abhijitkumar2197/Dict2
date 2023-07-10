@@ -1,10 +1,13 @@
 const express = require('express');
 const https = require('https');
+const bodyParser = require('body-parser');
+
 
 
 const app = express();
 
-
+// used bodyParser
+app.use(bodyParser.urlencoded({extended : false}));
 
 app.get("/" , (req,res) =>{
   res.sendFile( __dirname + "/index.html");
@@ -38,12 +41,17 @@ function makeRequest(url){
 }
 
 app.post("/" , async (req,res) => {
+  let formWord = req.body.word;
+  let fixedUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 
-  let parsedData = await makeRequest("https://api.dictionaryapi.dev/api/v2/entries/en/hello/");
-  console.log(JSON.parse(parsedData));
-  console.log("Hello");
+  let data = await makeRequest(fixedUrl + formWord + "/");
+  let parsedData = JSON.parse(data);
+  // console.log(parsedData);
+  // console.log("Hello");
   // res.send("This is from post request");
-  res.send(JSON.parse(parsedData));
+  let givenWord = parsedData[0].word;
+  let meaning = parsedData[0].meanings[0].definitions[0].definition
+  res.send(` the givenWord is : ${givenWord} and its meaning is : ${meaning}` );
 
   // let word = parsedData[0].word;
   // console.log(word);
