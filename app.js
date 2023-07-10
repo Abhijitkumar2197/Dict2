@@ -45,13 +45,19 @@ app.post("/" , async (req,res) => {
   let fixedUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 
   let data = await makeRequest(fixedUrl + formWord + "/");
+  if(data === "error"){
+    res.send("Error occured");
+    return;
+  }
   let parsedData = JSON.parse(data);
+  if (parsedData.length === 0 || !parsedData[0] ) { // || !parsedData[0].word || !parsedData[0].meanings
+    res.send("No information found");
+    return;
+  }
   // console.log(parsedData);
-  // console.log("Hello");
-  // res.send("This is from post request");
   let givenWord = parsedData[0].word;
-  let meaning = parsedData[0].meanings[0].definitions[0].definition
-  res.send(` the givenWord is : ${givenWord} and its meaning is : ${meaning}` );
+  let meaning = parsedData[0].meanings[0].definitions[0].definition;
+  res.send(` The given word is: <br>${givenWord}<br><br>Its meaning is: <br>${meaning}` );
 
   // let word = parsedData[0].word;
   // console.log(word);
