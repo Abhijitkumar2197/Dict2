@@ -1,6 +1,7 @@
 const express = require('express');
 const https = require('https');
 const bodyParser = require('body-parser');
+// const ejs = require('ejs');
 
 
 
@@ -8,6 +9,11 @@ const app = express();
 
 // used bodyParser
 app.use(bodyParser.urlencoded({extended : false}));
+
+
+// incluede ejs
+app.set("view-engine" , "ejs");
+
 
 app.get("/" , (req,res) =>{
   res.sendFile( __dirname + "/index.html");
